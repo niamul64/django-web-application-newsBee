@@ -1,6 +1,11 @@
 .errorColor{
 
 color: #FF0000;
+padding: 4px;
+text-align: center;
 
-
+}
+.signupform{
+text-align: center;
+font-size: 8px;
 }

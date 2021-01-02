@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
 {% block head %}
 
 <link rel="stylesheet" type="text/css" href="static/styleReg.css">
@@ -8,16 +9,18 @@
 
 
 {% block one %}
-<div  >
+<br>
+<div class="signupform" >
+
 <form  method="post">
     {% csrf_token %}
 {% if error %}
 <p class="errorColor"> {{error}} </p>
 {% endif %}
+<br>
+        {{form1|crispy}}<br>
 
-        {{form1}}<br>
-
-        {{form2}}
+        {{form2|crispy}}<br>
     <input type="submit" value="Login">
 
 
