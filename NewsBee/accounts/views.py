@@ -7,6 +7,8 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic.edit import CreateView,DeleteView,UpdateView
 from django.contrib.auth import authenticate, login
 from accounts.models import ExtentionUser
+from .forms import UserReg, ExtentUser
+from .models import ExtentionUser
 # Create your views here.
 
 def signin(request):
@@ -25,3 +27,25 @@ def signout(request):
         auth.logout(request)
         return redirect('signin')
     return redirect('signin')
+
+
+def signup(request):
+    e=''
+    if request.method == 'POST':
+        form1 = UserReg(request.POST)
+        form2 = ExtentUser(request.POST)
+
+        if form1.is_valid() and form2.is_valid() and len(form1.cleaned_data['email'])>9 :
+            userSaved=form1.save()
+
+
+            ExtentionUser(author =userSaved, fullName=form2.cleaned_data['fullName'], country= form2.cleaned_data['country']).save()
+            return redirect('signin')
+
+        elif len(form1.cleaned_data['password1'])<8 :
+            return render(request, 'signup.html', {'error': "password didn't matched or too short",'form1':form1,'form2':form2})
+        else:
+            return render(request, 'signup.html',{'error': "fill the form correctly", 'form1': form1, 'form2': form2})
+    form1=UserReg()
+    form2=ExtentUser()
+    return render(request, 'signup.html', {'error':e , 'form1':form1,'form2':form2})
