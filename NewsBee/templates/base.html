@@ -17,7 +17,14 @@
   <a href="#about">All News</a>
   <a href="#about">Bee News</a>
   <a href="#about">My Collection</a>
-  <a href="#">Log Out</a>
+  <a href="JavaScript:{document.getElementById('logout').submit()}" onclick=""> <span class="text-primary">Log Out</a>
+
+
+    <form id="logout" method="POST" action="{% url 'signout' %}">
+        {% csrf_token %}
+        <input type="hidden">
+    </form>
+
   <div class="search-container">
     <form action="">
       {% csrf_token %}

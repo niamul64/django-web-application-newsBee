@@ -20,3 +20,8 @@ def signin(request):
             return render(request, 'signin.html',{'error':"incorrect user name or password"})
 
     return render(request, 'signin.html')
+def signout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('signin')
+    return redirect('signin')
