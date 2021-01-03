@@ -25,44 +25,45 @@
 {% for i in data %}
     <div class="boxForNews" >
 
+        <form  method="post" action="{% url 'share' %}" >
+        {% csrf_token %}
+
+            <input type="hidden" name="img" value="{{i.image}}" >
         {% if i.image %}
         <img style="height: 140px; float: left;" src="{{i.image}}">
         {% endif %}
+
+             <input type="hidden" name="date" value="{{i.published_at}}" >
          {% if i.published_at %}
         <p><strong>Date:</strong>{{i.published_at}}</p>
         {% endif %}
+
+            <input type="hidden" name="title" value="{{i.title}}" >
         {% if i.title %}
         <p class="NewsTitleFont" ><strong>Title:</strong>{{i.title}}</p>
         {% endif %}
+
+            <input type="hidden" name="des" value="{{i.description}}" >
+            <input type="hidden" name="url" value="{{i.url}}" >
         {% if i.description %}
         <p class="descriptioFont"> {{i.description}} <a href="{{i.url}}" target="_blank">More..</a></p>
         {% endif %}
+
+            <input type="hidden" name="author" value="{{i.author}}" >
         {% if i.author %}
         <p><strong>Author:</strong>{{i.author}}</p>
         {% endif %}
+
+            <input type="hidden" name="cat" value="{{i.category}}" >
         {% if i.category %}
         <p><strong>Category:</strong>{{i.category}}</p>
         {% endif %}
 
+           <input type="hidden" name="country" value="{{i.country}}" >
 
 
 
-
-<!--        -->
-
-      <form  method="post" action="{% url 'share' %}" >
-        {% csrf_token %}
-          <input type="hidden" name="img" value={{i.image}} >
-          <input type="hidden" name="title" value={{i.title}} >
-        <input type="hidden" name="author" value={{i.author}} >
-        <input type="hidden" name="des" value={{i.description}} >
-          <input type="hidden" name="cat" value={{i.category}} >
-          <input type="hidden" name="date" value={{i.published_at}} >
-          <input type="hidden" name="url" value={{i.url}} >
-
-
-
-        <input type="submit" value="Share">
+          <input type="submit" value="Share">
         </form>
 
 

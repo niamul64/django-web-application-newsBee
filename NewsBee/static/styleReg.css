@@ -37,3 +37,11 @@ font-size: 18px;
 .NewsTitleFont{
 font-size: 22px;
 }
+
+
+.msgColor{
+color: #0040ff;
+padding: 4px;
+text-align: center;
+
+}

@@ -10,6 +10,8 @@ urlpatterns = [
     path('home', views.home, name='home'),
     path('share', views.share, name='share'),
 
+    path('myCollection', views.myCollection, name='myCollection'),
+
 
 
 

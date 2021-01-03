@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
-
+from django.utils import timezone
 class ExtentionUser(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     fullName= models.CharField(max_length=120, default="" , null=False , blank= False )
@@ -66,3 +66,15 @@ class ExtentionUser(models.Model):
     ))
 
 
+class Share(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    newsAuthor=models.CharField(max_length=120, default="" , null=True, blank= True )
+    comment= models.CharField(max_length=120, default="" , null=True, blank= True )
+    country= models.CharField(max_length=70, default= "", null=True)
+    url = models.CharField(max_length=120, default="", null=True, blank=True)
+    img =models.CharField(max_length=120, default="" , null=True, blank= True )
+    newsDate = models.CharField(max_length=120, default="" , null=True, blank= True )
+    category = models.CharField(max_length=120, default="", null=True, blank=True)
+    description = models.CharField(max_length=120, default="", null=True, blank=True)
+    title = models.CharField(max_length=120, default="", null=True, blank=True)
+    share_date = models.DateTimeField(auto_now_add=True)

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="/static/styleReg.css">
+<link rel="stylesheet" type="text/css" href="/static/msg.css">
+<link rel="stylesheet" type="text/css" href="/static/textarea.css">
+{% endblock%}
+
+
+{% block one %}
+
+{% if msg %}
+<p class="msgColor"> {{msg}} </p>
+{% endif %}
+
+
+<div class="boxForNews" >
+
+
+        {% if img %}
+        <img style="height: 140px; float: left;" src="{{img}}">
+        {% endif %}
+
+         {% if date %}
+        <p><strong>Date:</strong>{{date}}</p>
+        {% endif %}
+        {% if title %}
+        <p class="NewsTitleFont" ><strong>Title:</strong>{{title}}</p>
+        {% endif %}
+        {% if des %}
+        <p class="descriptioFont"> {{des}} <a href="{{i.url}}" target="_blank">More..</a></p>
+        {% endif %}
+        {% if auth %}
+        <p><strong>Author:</strong>{{auth}}</p>
+        {% endif %}
+        {% if cat %}
+        <p><strong>Category:</strong>{{cat}}</p>
+        {% endif %}
+
+    </div>
+
+{% endblock%}
