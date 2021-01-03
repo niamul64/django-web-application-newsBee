@@ -2,7 +2,7 @@
 
 {% block head %}
 
-<link rel="stylesheet" type="text/css" href="static/styleReg.css">
+<link rel="stylesheet" type="text/css" href="/static/styleReg.css">
 
 {% endblock%}
 
@@ -23,14 +23,25 @@
 
 {% for i in data %}
     <div class="boxForNews" >
-        <p><strong>Date:</strong>{{i.published_at}}</p>
-        {% if i.image%}
-        <img class="newsImg" src="{{i.image}}">
+
+        {% if i.image %}
+        <img style="height: 140px; float: left;" src="{{i.image}}">
         {% endif %}
-        <p class="NewsTitleFont"><strong>Title:</strong>{{i.title}}</p>
+         {% if i.published_at %}
+        <p><strong>Date:</strong>{{i.published_at}}</p>
+        {% endif %}
+        {% if i.title %}
+        <p class="NewsTitleFont" ><strong>Title:</strong>{{i.title}}</p>
+        {% endif %}
+        {% if i.description %}
         <p class="descriptioFont"> {{i.description}} <a href="{{i.url}}" target="_blank">More..</a></p>
+        {% endif %}
+        {% if i.author %}
         <p><strong>Author:</strong>{{i.author}}</p>
+        {% endif %}
+        {% if i.category %}
         <p><strong>Category:</strong>{{i.category}}</p>
+        {% endif %}
     </div>
 
 
