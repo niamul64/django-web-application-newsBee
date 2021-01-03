@@ -8,20 +8,35 @@
 
 
 {% block one %}
-<div  >
-<form  method="post">
-    {% csrf_token %}
-{% if error %}
-<p class="errorColor"> {{error}} </p>
-{% endif %}
 
-        <p>User Name:</p>
-        <input type="text" name="username" placeholder="Username" required><br>
-<p>Password:</p>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <input type="submit" value="Login">
+  <div class="search-container">
+    <form action="">
+      {% csrf_token %}
+        <p>Search news</p>
+        <input type="text"  name="search">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+{% if data %}
 
 
-</form>
-</div>
+
+{% for i in data %}
+    <div class="boxForNews" >
+        <img class="newsImg" src="{{i.image}}">
+            <p>{{i.description}}</p>
+    </div>
+
+ {% endfor %}
+
+
+
+{% else %}
+<p class="errorColor">Now such News here</p>
+  {%endif%}
 {% endblock%}
+
+
+
+
+

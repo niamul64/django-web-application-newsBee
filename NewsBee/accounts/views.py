@@ -9,6 +9,9 @@ from django.contrib.auth import authenticate, login
 from accounts.models import ExtentionUser
 from .forms import UserReg, ExtentUser
 from .models import ExtentionUser
+import http.client, urllib.parse # mediastack
+import requests
+import json
 # Create your views here.
 
 def signin(request):
@@ -49,3 +52,35 @@ def signup(request):
     form1=UserReg()
     form2=ExtentUser()
     return render(request, 'signup.html', {'error':e , 'form1':form1,'form2':form2})
+
+
+
+def home(request):
+
+    details = get_object_or_404(ExtentionUser, author=request.user.id)
+    country = details.country
+
+
+
+    conn = http.client.HTTPConnection('api.mediastack.com')
+
+    params = urllib.parse.urlencode({
+        'access_key': '325490ab1e265963d046fa76ec53fe98',
+        'categories': '-general,-sports',
+        'sort': 'published_desc',
+        'limit': 10,
+        "country": country,
+    })
+
+    conn.request('GET', '/v1/news?{}'.format(params))
+
+    res = conn.getresponse()
+    data = res.read()
+    absData  = json.loads(data)
+    allData = absData['data']
+
+    return render(request, 'home.html', {'data':allData})
+
+
+
+
