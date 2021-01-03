@@ -20,7 +20,7 @@ def signin(request):
         print (request.POST['username'])
         if user is not None:
             auth.login(request, user)
-            return redirect('signin')
+            return redirect('home')
         else:
             return render(request, 'signin.html',{'error':"incorrect user name or password"})
 
@@ -28,7 +28,7 @@ def signin(request):
 def signout(request):
     if request.method == 'POST':
         auth.logout(request)
-        return redirect('signin')
+
     return redirect('signin')
 
 
@@ -60,16 +60,15 @@ def news(request):
     details = get_object_or_404(ExtentionUser, author=request.user.id)
     country = details.country
 
-
+    print (country)
 
     conn = http.client.HTTPConnection('api.mediastack.com')
 
     params = urllib.parse.urlencode({
         'access_key': '325490ab1e265963d046fa76ec53fe98',
-        'categories': '-general,-sports',
-        'sort': 'published_desc',
         'limit': 10,
-        "country": country,
+        'sort': 'published_desc',
+        'countries': country,
     })
 
     conn.request('GET', '/v1/news?{}'.format(params))
@@ -85,6 +84,32 @@ def news(request):
         i["published_at"]=d[0]
 
     return render(request, 'news.html', {'data':allData})
+
+
+def home(request):
+    conn = http.client.HTTPConnection('api.mediastack.com')
+
+    params = urllib.parse.urlencode({
+        'access_key': '325490ab1e265963d046fa76ec53fe98',
+
+        'sort': 'published_desc',
+        'limit': 10,
+
+    })
+
+    conn.request('GET', '/v1/news?{}'.format(params))
+
+    res = conn.getresponse()
+    data = res.read()
+    absData  = json.loads(data)
+    allData = absData['data']
+
+    for i in allData:
+
+        d=i["published_at"].split('T')
+        i["published_at"]=d[0]
+
+    return render(request, 'home.html', {'data':allData})
 
 
 

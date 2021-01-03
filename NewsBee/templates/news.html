@@ -22,6 +22,8 @@
 
 
 {% for i in data %}
+
+
     <div class="boxForNews" >
 
         {% if i.image %}
@@ -52,18 +54,12 @@
 
         <input type="hidden" name="password" placeholder="Password" required><br>
         <input type="submit" value="Share">
-
+        </form>
 
     </div>
 
 
-
-
-
-
  {% endfor %}
-
-
 
 {% else %}
 <p class="errorColor">Now such News here</p>
