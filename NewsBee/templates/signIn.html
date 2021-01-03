@@ -8,7 +8,7 @@
 
 
 {% block one %}
-<div  >
+<div class="signupform boxForNews" >
 <form  method="post">
     {% csrf_token %}
 {% if error %}
@@ -17,9 +17,9 @@
 
         <p>User Name:</p>
         <input type="text" name="username" placeholder="Username" required><br>
-<p>Password:</p>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <input type="submit" value="Login">
+        <p>Password:</p>
+        <input type="password" name="password" placeholder="Password" required><br><br>
+        <input type="submit" value="Login"> <p>Don't have an account?<a href="{% url 'signin' %}">Sign UP</a></p>
 
 
 </form>

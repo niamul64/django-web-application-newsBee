@@ -55,7 +55,7 @@ def signup(request):
 
 
 
-def home(request):
+def news(request):
 
     details = get_object_or_404(ExtentionUser, author=request.user.id)
     country = details.country
@@ -84,7 +84,7 @@ def home(request):
         d=i["published_at"].split('T')
         i["published_at"]=d[0]
 
-    return render(request, 'home.html', {'data':allData})
+    return render(request, 'news.html', {'data':allData})
 
 
 

@@ -10,7 +10,7 @@
 
 {% block one %}
 <br>
-<div class="signupform" >
+<div class="signupform boxForNews" >
 
 <form  method="post">
     {% csrf_token %}
@@ -21,7 +21,7 @@
         {{form1|crispy}}<br>
 
         {{form2|crispy}}<br>
-    <input type="submit" value="Login">
+    <input type="submit" value="Sign Up">
 
 
 </form>
