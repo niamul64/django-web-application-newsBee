@@ -23,9 +23,16 @@
 
 {% for i in data %}
     <div class="boxForNews" >
+        {% if i.image%}
         <img class="newsImg" src="{{i.image}}">
-            <p>{{i.description}}</p>
+        {% endif %}
+            <p class="descriptioFont">{{i.description}}</p>
     </div>
+
+
+
+
+
 
  {% endfor %}
 
@@ -33,7 +40,7 @@
 
 {% else %}
 <p class="errorColor">Now such News here</p>
-  {%endif%}
+  {% endif %}
 {% endblock%}
 
 

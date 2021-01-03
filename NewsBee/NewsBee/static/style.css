@@ -14,7 +14,7 @@
   text-align: center;
   padding: 10px 12px;
   text-decoration: none;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 /* Navbar links on mouse-over */
@@ -60,7 +60,4 @@
 
 /* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
 
-.search-container{
-height: 8px;
-  font-size: 6px;
-}
+
