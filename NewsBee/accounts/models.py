@@ -64,3 +64,5 @@ class ExtentionUser(models.Model):
         ('ve', 'Venuzuela'),
 
     ))
+
+

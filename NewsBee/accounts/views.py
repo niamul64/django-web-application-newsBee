@@ -103,10 +103,6 @@ def news(request):
 
 
 def home(request):
-    if request.method == 'POST':
-        img = request.POST['img']
-        print (img)
-
 
     conn = http.client.HTTPConnection('api.mediastack.com')
 
@@ -132,9 +128,11 @@ def home(request):
 
         select=[]
         for i in allData:
+
             try:
                 d = i["published_at"].split('T')
                 i["published_at"] = d[0]
+
                 if se in i["title"]:
                     select.append(i)
 
@@ -142,6 +140,7 @@ def home(request):
                 pass
         return render(request, 'home.html', {'data': select})
     for i in allData:
+
         try:
             d=i["published_at"].split('T')
             i["published_at"]=d[0]
@@ -155,3 +154,17 @@ def home(request):
 
 
 
+def share(request):
+    if request.method == 'POST':
+
+        img = request.POST['img']
+        print (img)
+
+        title= request.POST['title']
+        auth = request.POST['author']
+        des= request.POST['des']
+        cat = request.POST['cat']
+        date= request.POST['date']
+        url=request.POST['url']
+
+    return render(request, 'signin.html')

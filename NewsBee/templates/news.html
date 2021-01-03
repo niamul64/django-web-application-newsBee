@@ -46,13 +46,18 @@
         {% endif %}
 
 
-        <form  method="post">
+      <form  method="post" action="{% url 'share' %}" >
         {% csrf_token %}
+          <input type="hidden" name="img" value={{i.image}} >
+          <input type="hidden" name="title" value={{i.title}} >
+        <input type="hidden" name="author" value={{i.author}} >
+        <input type="hidden" name="des" value={{i.description}} >
+          <input type="hidden" name="cat" value={{i.category}} >
+          <input type="hidden" name="date" value={{i.published_at}} >
+          <input type="hidden" name="url" value={{i.url}} >
 
 
-        <input type="hidden" name="username" placeholder="Username" required><br>
 
-        <input type="hidden" name="password" placeholder="Password" required><br>
         <input type="submit" value="Share">
         </form>
 
