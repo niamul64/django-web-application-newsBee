@@ -60,15 +60,16 @@ def news(request):
     details = get_object_or_404(ExtentionUser, author=request.user.id)
     country = details.country
 
-    print (country)
+
 
     conn = http.client.HTTPConnection('api.mediastack.com')
 
     params = urllib.parse.urlencode({
         'access_key': '325490ab1e265963d046fa76ec53fe98',
-        'limit': 10,
+
         'sort': 'published_desc',
         'countries': country,
+        'languages': 'en'
     })
 
     conn.request('GET', '/v1/news?{}'.format(params))
@@ -78,12 +79,22 @@ def news(request):
     absData  = json.loads(data)
     allData = absData['data']
 
+    if request.method == 'GET' and  request.GET.get('search')!=None:
+        se = request.GET.get('search')
+
+        select=[]
+        for i in allData:
+            d = i["published_at"].split('T')
+            i["published_at"] = d[0]
+            if se in i["title"]:
+                select.append(i)
+        return render(request, 'home.html', {'data': select})
     for i in allData:
 
         d=i["published_at"].split('T')
         i["published_at"]=d[0]
 
-    return render(request, 'news.html', {'data':allData})
+    return render(request, 'news.html', {'data': allData})
 
 
 def home(request):
@@ -94,6 +105,7 @@ def home(request):
 
         'sort': 'published_desc',
         'limit': 10,
+        'languages': 'en'
 
     })
 
@@ -104,10 +116,26 @@ def home(request):
     absData  = json.loads(data)
     allData = absData['data']
 
+
+    if request.method == 'GET' and  request.GET.get('search')!=None:
+        se = request.GET.get('search')
+
+        select=[]
+        for i in allData:
+            d = i["published_at"].split('T')
+            i["published_at"] = d[0]
+            if se in i["title"]:
+                select.append(i)
+
+
+        return render(request, 'home.html', {'data': select})
     for i in allData:
 
         d=i["published_at"].split('T')
         i["published_at"]=d[0]
+
+
+
 
     return render(request, 'home.html', {'data':allData})
 

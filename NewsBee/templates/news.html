@@ -10,16 +10,16 @@
 {% block one %}
 
   <div class="search-container">
-    <form action="">
+    <form action="{% url 'news' %}" method="GET" >
       {% csrf_token %}
 <br>
-        <input type="text"  name="search">
+        <input type="text"  name="search" placeholder="search.." >
       <button type="submit">Search</button>
     </form>
   </div>
+
+
 {% if data %}
-
-
 
 {% for i in data %}
 
