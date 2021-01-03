@@ -69,7 +69,7 @@ def news(request):
 
         'sort': 'published_desc',
         'countries': country,
-        'languages': 'en'
+        'languages': 'en',
     })
 
     conn.request('GET', '/v1/news?{}'.format(params))
@@ -84,20 +84,30 @@ def news(request):
 
         select=[]
         for i in allData:
-            d = i["published_at"].split('T')
-            i["published_at"] = d[0]
-            if se in i["title"]:
-                select.append(i)
-        return render(request, 'home.html', {'data': select})
+
+            try:
+                d = i["published_at"].split('T')
+                i["published_at"] = d[0]
+                if se in i["title"]:
+                    select.append(i)
+            except:
+                pass
+        return render(request, 'news.html', {'data': select})
     for i in allData:
-
-        d=i["published_at"].split('T')
-        i["published_at"]=d[0]
-
+        try:
+            d=  i["published_at"].split('T')
+            i["published_at"]=d[0]
+        except:
+            pass
     return render(request, 'news.html', {'data': allData})
 
 
 def home(request):
+    if request.method == 'POST':
+        img = request.POST['img']
+        print (img)
+
+
     conn = http.client.HTTPConnection('api.mediastack.com')
 
     params = urllib.parse.urlencode({
@@ -105,7 +115,7 @@ def home(request):
 
         'sort': 'published_desc',
         'limit': 10,
-        'languages': 'en'
+        'languages': 'en',
 
     })
 
@@ -122,18 +132,21 @@ def home(request):
 
         select=[]
         for i in allData:
-            d = i["published_at"].split('T')
-            i["published_at"] = d[0]
-            if se in i["title"]:
-                select.append(i)
+            try:
+                d = i["published_at"].split('T')
+                i["published_at"] = d[0]
+                if se in i["title"]:
+                    select.append(i)
 
-
+            except:
+                pass
         return render(request, 'home.html', {'data': select})
     for i in allData:
-
-        d=i["published_at"].split('T')
-        i["published_at"]=d[0]
-
+        try:
+            d=i["published_at"].split('T')
+            i["published_at"]=d[0]
+        except:
+            pass
 
 
 
