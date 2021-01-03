@@ -18,16 +18,22 @@ font-size: 8px;
 box-shadow: 4px 4px 5px #000000;
 padding: 4px;
  margin-top: 18px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 
 
 .newsImg{
-height: 100px;
+height: 150px;
+float: left;
 }
 
 
 .descriptioFont{
-font-size: 20px;
+font-size: 18px;
 
+}
+.NewsTitleFont{
+font-size: 22px;
 }

@@ -79,6 +79,11 @@ def home(request):
     absData  = json.loads(data)
     allData = absData['data']
 
+    for i in allData:
+
+        d=i["published_at"].split('T')
+        i["published_at"]=d[0]
+
     return render(request, 'home.html', {'data':allData})
 
 

@@ -23,10 +23,14 @@
 
 {% for i in data %}
     <div class="boxForNews" >
+        <p><strong>Date:</strong>{{i.published_at}}</p>
         {% if i.image%}
         <img class="newsImg" src="{{i.image}}">
         {% endif %}
-            <p class="descriptioFont">{{i.description}}</p>
+        <p class="NewsTitleFont"><strong>Title:</strong>{{i.title}}</p>
+        <p class="descriptioFont"> {{i.description}} <a href="{{i.url}}" target="_blank">More..</a></p>
+        <p><strong>Author:</strong>{{i.author}}</p>
+        <p><strong>Category:</strong>{{i.category}}</p>
     </div>
 
 
