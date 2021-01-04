@@ -200,7 +200,7 @@ def myCollection(request):
         msg='A news is collected'
 #
 
-    collection = Share.objects.all()
+    collection = Share.objects.all().filter(author=request.user).order_by("-share_date")
     for i in collection:
         print (i.img)
 
@@ -210,10 +210,6 @@ def myCollection(request):
 
 
 def newsBee(request):
-
-
-
-#
 
     collection = Share.objects.all()
     for i in collection:
