@@ -66,7 +66,7 @@ def news(request):
 
     params = urllib.parse.urlencode({
         'access_key': '325490ab1e265963d046fa76ec53fe98',
-
+        'limit': 10,
         'sort': 'published_desc',
         'countries': country,
         'languages': 'en',
