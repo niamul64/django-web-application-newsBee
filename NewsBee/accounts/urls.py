@@ -11,7 +11,7 @@ urlpatterns = [
     path('share', views.share, name='share'),
 
     path('myCollection', views.myCollection, name='myCollection'),
-
+    path('newsBee', views.newsBee, name='newsBee'),
 
 
 

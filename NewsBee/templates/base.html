@@ -23,7 +23,7 @@
 
   {% if request.user.is_authenticated %}
   <a href="{% url 'news' %}">News</a>
-  <a href="#about">Bee News</a>
+  <a href="{% url 'newsBee' %}">Bee News</a>
   <a href="{% url 'myCollection' %}">My Collection</a>
 
 

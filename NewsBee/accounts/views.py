@@ -201,19 +201,17 @@ def myCollection(request):
 #
 
     collection = Share.objects.all().filter(author=request.user).order_by("-share_date")
-    for i in collection:
-        print (i.img)
-
 
     return render(request, 'myCollection.html', {'data': collection, 'msg':msg  })
 
 
 
 def newsBee(request):
+    details = get_object_or_404(ExtentionUser, author=request.user.id)
+    userCountry = details.country
 
-    collection = Share.objects.all()
-    for i in collection:
-        print (i.img)
+    collection = Share.objects.all().order_by("-share_date")
 
 
-    return render(request, 'myCollection.html', {'data': collection, 'msg':msg  })
+
+    return render(request, 'newsBee.html', {'data': collection})

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="/static/styleReg.css">
+<link rel="stylesheet" type="text/css" href="/static/msg.css">
+<link rel="stylesheet" type="text/css" href="/static/textarea.css">
+<link rel="stylesheet" type="text/css" href="/static/comment.css">
+
+{% endblock%}
+
+
+{% block one %}
+
+
+{% if data %}
+
+{% for i in data %}
+
+<div class="boxForNews" >
+
+        {% if i.comment %}
+        <div class="commentBox">
+
+        <p ><strong>Comment:</strong>{{i.comment}} </p>
+
+            <p >Shared By: {{i.author.username}} </p>
+
+        </div><br>
+        {% endif %}
+
+
+        {% if i.img %}
+        <img style="height: 140px; float: left;" src="{{i.img}}">
+        {% endif %}
+
+         {% if i.newsDate %}
+        <p><strong>Date:</strong>{{i.newsDate}}</p>
+        {% endif %}
+        {% if i.title %}
+        <p class="NewsTitleFont" ><strong>Title:</strong>{{i.title}}</p>
+        {% endif %}
+        {% if i.description %}
+        <p class="descriptioFont"> {{i.description}} <a href="{{i.url}}" target="_blank">More..</a></p>
+        {% endif %}
+        {% if auth %}
+        <p><strong>Author:</strong>{{auth}}</p>
+        {% endif %}
+        {% if cat %}
+        <p><strong>Category:</strong>{{cat}}</p>
+        {% endif %}
+
+    </div>
+{% endfor %}
+
+
+{% else %}
+<p class="msgColor"> No News to show</p>
+{% endif %}
+{% endblock%}
