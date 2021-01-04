@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>Title</title>
 
-    <link rel="stylesheet" type="text/css" href="/static/style.css">
 
+    <link rel="stylesheet" type="text/css" href="/static/navcss1.css">
 {% block head %}
 
 {% endblock%}
@@ -17,16 +17,16 @@
 
 
 <div class="topnav" >
-    <a class="active" href="{% url 'home' %}">NewsBee</a>
+    <a class="active BorderG" href="{% url 'home' %}">NewsBee</a>
 
   {% if request.user.is_authenticated %}
-  <a href="{% url 'news' %}">News</a>
-  <a href="{% url 'newsBee' %}">Bee News</a>
-  <a href="{% url 'myCollection' %}">My Collection</a>
+  <a class="BorderG" href="{% url 'news' %}"> News</a>
+  <a class="BorderG" href="{% url 'newsBee' %}">Bee News</a>
+  <a class="BorderG" href="{% url 'myCollection' %}">My Collection</a>
 
 
 
-    <a href="JavaScript:{document.getElementById('logout').submit()}" onclick=""> <span class="text-primary">Log Out</a>
+    <a class="BorderG" href="JavaScript:{document.getElementById('logout').submit()}" onclick="">Log Out</a>
 
 
     <form id="logout" method="POST" action="{% url 'signout' %}">
@@ -35,8 +35,8 @@
     </form>
 
   {% else %}
-  <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
-  <a class="nav-item nav-link" href="{% url 'signin' %}">Sign In</a>
+  <a class="BorderG" href="{% url 'signup' %}">Sign Up</a>
+  <a class="BorderG" href="{% url 'signin' %}">Sign In</a>
   {% endif %}
 </div>
 

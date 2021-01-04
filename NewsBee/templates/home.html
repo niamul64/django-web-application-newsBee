@@ -9,18 +9,20 @@
 
 <link rel="stylesheet" type="text/css" href="/static/msg.css">
 <link rel="stylesheet" type="text/css" href="/static/comment.css">
+<link rel="stylesheet" type="text/css" href="/static/search.css">
+
 
 {% endblock%}
 
 
 {% block one %}
 
-  <div class="search-container">
+  <div class="search">
     <form action="{% url 'home' %}" method="GET" >
       {% csrf_token %}
 <br>
-        <input type="text"  name="search" placeholder="search.." >
-      <button type="submit">Search</button>
+        <input class="search" type="text"  name="search" placeholder="search.." >
+      <button class="search" type="submit">Search</button>
     </form>
   </div>
 
@@ -71,7 +73,7 @@
 
 
 
-          <input type="submit" value="Share">
+          <input class="shareB" type="submit" value="Share">
         </form>
 
 

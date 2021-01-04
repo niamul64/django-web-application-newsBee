@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" type="text/css" href="/static/textarea.css">
 <link rel="stylesheet" type="text/css" href="/static/msg.css">
+<link rel="stylesheet" type="text/css" href="/static/search.css">
 {% endblock%}
 
 
@@ -16,7 +17,7 @@
        <form  method="post" action="{% url 'myCollection' %}" >
         {% csrf_token %}
         <p>Write Something..:</p><br>
-        <textarea name="comment" class="textArea"  rows="5" cols="50"></textarea>
+        <textarea class="search" name="comment" class="textArea"  rows="5" cols="50"></textarea>
 
           <input type="hidden" name="img" value="{{img}}" >
 
@@ -30,7 +31,7 @@
 
 
 
-        <input type="submit" value="Share">
+        <input class="search" type="submit" value="Share">
         </form>
 
 <br>

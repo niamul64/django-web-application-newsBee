@@ -12,9 +12,9 @@
   display: block;
   color: black;
   text-align: center;
-  padding: 10px 12px;
+  padding: 2px 2px;
   text-decoration: none;
-  font-size: 13px;
+  font-size: 35px;
 }
 
 /* Navbar links on mouse-over */
@@ -34,30 +34,15 @@
   float: right;
 }
 
-/* Style the input field inside the navbar */
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
 
-/* Style the button inside the input container */
-.topnav .search-container button {
-  float: right;
-  padding: 4px;
-  margin-top: 6px;
-  margin-right: 10px;
-  background: #ddd;
-
-  border: none;
-  cursor: pointer;
-}
 
 .topnav .search-container button:hover {
   background: #ccc;
 }
 
-/* Add responsiveness - On small screens, display the navbar vertically instead of horizontally */
+.BorderG{
+
+ border: 2px solid green;
+}
 
 
