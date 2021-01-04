@@ -4,7 +4,7 @@ from django.contrib import auth
 from django.views.generic import ListView,detail
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic.edit import CreateView,DeleteView,UpdateView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.contrib.auth import authenticate, login
 
 from .forms import UserReg, ExtentUser
@@ -33,6 +33,10 @@ def signout(request):
 
 
 def signup(request):
+    if request.user.is_authenticated:
+        print ("loged in")
+        return redirect('home')
+
     e=''
     if request.method == 'POST':
         form1 = UserReg(request.POST)
@@ -202,6 +206,10 @@ def myCollection(request):
 
     collection = Share.objects.all().filter(author=request.user).order_by("-share_date")
 
+    if not collection:
+        msg="You don't have any shared news"
+
+
     return render(request, 'myCollection.html', {'data': collection, 'msg':msg  })
 
 
@@ -215,3 +223,8 @@ def newsBee(request):
 
 
     return render(request, 'newsBee.html', {'data': collection})
+
+class delete(DeleteView):
+    model=Share
+    template_name='delete.html'
+    success_url = 'myCollection/'

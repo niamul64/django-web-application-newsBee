@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel="stylesheet" type="text/css" href="/static/styleReg.css">
+<link rel="stylesheet" type="text/css" href="/static/msg.css">
+<link rel="stylesheet" type="text/css" href="/static/textarea.css">
+<link rel="stylesheet" type="text/css" href="/static/comment.css">
+
+{% endblock%}
+
+
+{% block one %}
+
+
+
+<div class="msgColor">
+<form action="" method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete the news?</p>
+    <input type="submit" value="Confirm" />
+</form>
+
+</div>
+
+
+
+{% endblock%}

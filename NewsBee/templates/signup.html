@@ -4,24 +4,25 @@
 {% block head %}
 
 <link rel="stylesheet" type="text/css" href="static/styleReg.css">
-
+<link rel="stylesheet" type="text/css" href="static/fontsizingLogin.css">
 {% endblock%}
 
 
 {% block one %}
 <br>
-<div class="signupform boxForNews" >
+<div class="signupform boxForNews refont" style="font-size: 16px;" >
 
 <form  method="post">
     {% csrf_token %}
 {% if error %}
-<p class="errorColor"> {{error}} </p>
+<p class="errorColor"  > {{error}} </p>
 {% endif %}
 <br>
+
         {{form1|crispy}}<br>
 
         {{form2|crispy}}<br>
-    <input type="submit" value="Sign Up">
+    <input class="refont" type="submit" value="Sign Up">
 
 
 </form>

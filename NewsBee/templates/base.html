@@ -7,8 +7,6 @@
 
     <link rel="stylesheet" type="text/css" href="/static/style.css">
 
-
-
 {% block head %}
 
 {% endblock%}
@@ -18,7 +16,7 @@
 
 
 
-<div class="topnav">
+<div class="topnav" >
     <a class="active" href="{% url 'home' %}">NewsBee</a>
 
   {% if request.user.is_authenticated %}
@@ -35,7 +33,6 @@
         {% csrf_token %}
         <input type="hidden">
     </form>
-
 
   {% else %}
   <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>

@@ -3,23 +3,24 @@
 {% block head %}
 
 <link rel="stylesheet" type="text/css" href="static/styleReg.css">
+<link rel="stylesheet" type="text/css" href="static/fontsizingLogin.css">
 
 {% endblock%}
 
 
 {% block one %}
-<div class="signupform boxForNews" >
+<div class="signupform boxForNews">
 <form  method="post">
     {% csrf_token %}
 {% if error %}
 <p class="errorColor"> {{error}} </p>
 {% endif %}
 
-        <p>User Name:</p>
-        <input type="text" name="username" placeholder="Username" required><br>
-        <p>Password:</p>
-        <input type="password" name="password" placeholder="Password" required><br><br>
-        <input type="submit" value="Login"> <p>Don't have an account?<a href="{% url 'signup' %}">Sign UP</a></p>
+        <p class="refont">User Name:</p>
+        <input class="refont"  type="text" name="username" placeholder="Username" required><br>
+        <p class="refont">Password:</p>
+        <input class="refont" type="password" name="password" placeholder="Password" required><br><br>
+        <input class="refont"  type="submit" value="Login"> <p class="refont" >Don't have an account?<a href="{% url 'signup' %}">Sign UP</a></p>
 
 
 </form>

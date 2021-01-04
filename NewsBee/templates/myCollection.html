@@ -21,7 +21,8 @@
 
         {% if i.comment %}
         <div class="commentBox">
-            <button class="errorColor">Delete</button>
+
+                <a href="{% url 'delete' i.id %}"> <button class="errorColor"  >Delete</button></a>
         <p ><strong>Comment:</strong>{{i.comment}} </p>
 
         </div><br>
