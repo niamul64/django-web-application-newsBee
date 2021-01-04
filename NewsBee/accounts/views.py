@@ -157,23 +157,19 @@ def home(request):
 def share(request):
     if request.method == 'POST':
         img = request.POST['img']
-        print (img)
         title = request.POST['title']
-        print (title)
         auth = request.POST['author']
-        print (auth)
 
         des = request.POST['des']
-        print (des)
 
         cat = request.POST['cat']
-        print (cat)
+
         date = request.POST['date']
-        print (date)
+
         url = request.POST['url']
-        print (url)
+
         country = request.POST['country']
-        print (country)
+
 
     return render(request, 'share.html', {'img':img, 'title':title, 'author':auth, 'des':des, 'cat':cat,'date':date,'url':url, 'country':country  })
 
@@ -181,7 +177,7 @@ def myCollection(request):
     msg=''
     if request.method == 'POST':
         comment = request.POST['comment']
-        print (comment)
+
         img = request.POST['img']
 
         title= request.POST['title']
@@ -198,13 +194,30 @@ def myCollection(request):
 
         url=request.POST['url']
 
-        country=request.POST['country']
+        country =request.POST['country']
 
-        #share(author= request.user ).save()
+        Share(author= request.user, newsAuthor=auth , comment=comment , country=country, url=url, img=img, newsDate=date, category=cat, description=des, title=title ).save()
         msg='A news is collected'
-#, newsAuthor=auth,comment=comment,country=country,url=url,img=img,newsDate=date,category=cat, description=des,title=title
+#
 
-    # student_list = share.objects.all()
+    collection = Share.objects.all()
+    for i in collection:
+        print (i.img)
 
 
-    return render(request, 'myCollection.html', {'comment':comment, 'img':img, 'title':title, 'auth': auth , 'des':des, 'cat':cat,'date':date,'url':url, 'country':country  })
+    return render(request, 'myCollection.html', {'data': collection, 'msg':msg  })
+
+
+
+def newsBee(request):
+
+
+
+#
+
+    collection = Share.objects.all()
+    for i in collection:
+        print (i.img)
+
+
+    return render(request, 'myCollection.html', {'data': collection, 'msg':msg  })

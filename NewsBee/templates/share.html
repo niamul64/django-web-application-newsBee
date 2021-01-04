@@ -20,8 +20,8 @@
 
           <input type="hidden" name="img" value="{{img}}" >
 
-          <input type="hidden" name="title" value=""{{title}}" >
-        <input type="hidden" name="author" value="{{auth}}" >
+          <input type="hidden" name="title" value="{{title}}" >
+        <input type="hidden" name="author" value="{{author}}" >
         <input type="hidden" name="des" value="{{des}}" >
           <input type="hidden" name="cat" value="{{cat}}" >
           <input type="hidden" name="date" value="{{date}}" >
@@ -50,7 +50,7 @@
         <p class="descriptioFont"> {{des}} <a href="{{i.url}}" target="_blank">More..</a></p>
         {% endif %}
         {% if auth %}
-        <p><strong>Author:</strong>{{auth}}</p>
+        <p><strong>Author:</strong>{{author}}</p>
         {% endif %}
         {% if cat %}
         <p><strong>Category:</strong>{{cat}}</p>
