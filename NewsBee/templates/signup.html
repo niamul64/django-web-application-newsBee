@@ -5,6 +5,7 @@
 
 <link rel="stylesheet" type="text/css" href="static/styleReg.css">
 <link rel="stylesheet" type="text/css" href="static/fontsizing.css">
+<link rel="stylesheet" type="text/css" href="static/form.css">
 {% endblock%}
 
 
@@ -19,9 +20,11 @@
 {% endif %}
 <br>
 
-        {{form1|crispy}}<br>
+      <span class="form-control">  {{form1|crispy}}<br>
 
-        {{form2|crispy}}<br>
+        {{form2|crispy}}
+
+          <br></span>
     <input class="refont" type="submit" value="Sign Up">
 
 
