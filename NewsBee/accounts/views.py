@@ -52,7 +52,7 @@ def signup(request):
         elif len(form1.cleaned_data['password1'])<8 :
             return render(request, 'signup.html', {'error': "password didn't matched or too short",'form1':form1,'form2':form2})
         else:
-            return render(request, 'signup.html',{'error': "fill the form correctly", 'form1': form1, 'form2': form2})
+            return render(request, 'signup.html',{'error': "fill the form correctly and enter a unique username", 'form1': form1, 'form2': form2})
     form1=UserReg()
     form2=ExtentUser()
     return render(request, 'signup.html', {'error':e , 'form1':form1,'form2':form2})
