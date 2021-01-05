@@ -52,7 +52,7 @@ def signup(request):
         elif len(form1.cleaned_data['password1'])<8 :
             return render(request, 'signup.html', {'error': "password didn't matched or too short",'form1':form1,'form2':form2})
         else:
-            return render(request, 'signup.html',{'error': "fill the form correctly and enter a unique username", 'form1': form1, 'form2': form2})
+            return render(request, 'signup.html',{'error': "fill the form correctly and choose a unique username", 'form1': form1, 'form2': form2})
     form1=UserReg()
     form2=ExtentUser()
     return render(request, 'signup.html', {'error':e , 'form1':form1,'form2':form2})
@@ -92,7 +92,7 @@ def news(request):
             try:
                 d = i["published_at"].split('T')
                 i["published_at"] = d[0]
-                if se.lower() == i["title"].lower():
+                if se in i["title"]:
                     select.append(i)
             except:
                 pass
@@ -137,7 +137,7 @@ def home(request):
                 d = i["published_at"].split('T')
                 i["published_at"] = d[0]
 
-                if se.lower() == i["title"].lower():
+                if se in i["title"]:
                     select.append(i)
 
             except:
