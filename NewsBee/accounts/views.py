@@ -92,7 +92,7 @@ def news(request):
             try:
                 d = i["published_at"].split('T')
                 i["published_at"] = d[0]
-                if se in i["title"]:
+                if se.lower() == i["title"].lower():
                     select.append(i)
             except:
                 pass
@@ -137,7 +137,7 @@ def home(request):
                 d = i["published_at"].split('T')
                 i["published_at"] = d[0]
 
-                if se in i["title"]:
+                if se.lower() == i["title"].lower():
                     select.append(i)
 
             except:
