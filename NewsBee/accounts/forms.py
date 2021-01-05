@@ -1,10 +1,10 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth.models import User
-from .models import ExtentionUser
+from django.contrib.auth.models import User    # default user model importing
+from .models import ExtentionUser   # importing ExtentionUser model from models.py
 
 
-class UserReg(UserCreationForm):
+class UserReg(UserCreationForm):   # user model form formating for frontend
     username = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control',
@@ -31,7 +31,7 @@ class UserReg(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2' )
 
 
-class ExtentUser(forms.ModelForm):
+class ExtentUser(forms.ModelForm):  # ExtentionUser model form formating for frontend
     fullName = forms.CharField(widget=forms.TextInput(
         attrs={
             'class': 'form-control',

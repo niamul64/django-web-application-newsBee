@@ -4,14 +4,14 @@ from django.contrib import auth
 from django.views.generic import ListView,detail
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import DeleteView
 from django.contrib.auth import authenticate, login
 
-from .forms import UserReg, ExtentUser
-from .models import ExtentionUser, Share
-import http.client, urllib.parse # mediastack
+from .forms import UserReg, ExtentUser   # forms importing from forms.py
+from .models import ExtentionUser, Share   # models importing from models.py
+import http.client, urllib.parse    # mediastack
 import requests
-import json
+import json     # for json file debugging, decoding
 # Create your views here.
 
 def signin(request):
@@ -215,7 +215,7 @@ def myCollection(request):
 
 
 def newsBee(request):
-    details = get_object_or_404(ExtentionUser, author=request.user.id)
+    details = get_object_or_404(ExtentionUser, author=request.user)
     userCountry = details.country
 
     collection = Share.objects.all().order_by("-share_date")

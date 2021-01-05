@@ -1,8 +1,8 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User # default user model import
 # Create your models here.
 from django.utils import timezone
-class ExtentionUser(models.Model):
+class ExtentionUser(models.Model):  # extra fields for user
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     fullName= models.CharField(max_length=120, default="" , null=False , blank= False )
     country= models.CharField(max_length=70,default= "", null=False, choices=(
@@ -66,7 +66,7 @@ class ExtentionUser(models.Model):
     ))
 
 
-class Share(models.Model):
+class Share(models.Model):                      # for saving the shared news in database
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     newsAuthor=models.CharField(max_length=120, default="" , null=True, blank= True )
     comment= models.CharField(max_length=120, default="" , null=True, blank= True )
