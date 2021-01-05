@@ -15,12 +15,12 @@ class UserReg(UserCreationForm):
             'class': 'form-control',
         }
     ))
-    password1 = forms.CharField(widget=forms.TextInput(
+    password1 = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
         }
     ))
-    password2 = forms.CharField(widget=forms.TextInput(
+    password2 = forms.CharField(widget=forms.PasswordInput(
         attrs={
             'class': 'form-control',
         }
