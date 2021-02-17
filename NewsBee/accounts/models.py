@@ -5,7 +5,7 @@ from django.utils import timezone
 class ExtentionUser(models.Model):  # extra fields for user
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     fullName= models.CharField(max_length=120, default="" , null=False , blank= False )
-    country= models.CharField(max_length=70,default= "", null=False, choices=(
+    country= models.CharField(max_length=120,default= "", null=False, choices=(
         ('', 'Select'),
         ('ar','Argentina'),
         ('au','Australia'),
@@ -20,7 +20,6 @@ class ExtentionUser(models.Model):  # extra fields for user
         ('eg', 'Egypt'),
         ('fr', 'France'),
         ('de', 'Germany'),
-
         ('gr', 'Greece'),
         ('hk', 'Hong Kong'),
         ('hu', 'Hungary'),
